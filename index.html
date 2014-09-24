@@ -13,7 +13,7 @@
 
       <script>
         $(function() {
-          setupLanguages(["java","csharp"]);
+          setupLanguages(["csharp","java"]);
         });
       </script>
   </head>
@@ -28,8 +28,8 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="java">java</a>
               <a href="#" data-language-name="csharp">csharp</a>
+              <a href="#" data-language-name="java">java</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -46,143 +46,665 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the WFDManager API! WFDManager is WiFi Direct Transfer Library. You can use our API to access other WiFi Direct device, which can transfer data using socket connection.</p>
+<p>Welcome to the WFDManager API! WFDManager is WiFi Direct Library. You can use our API to access other WiFi Direct device, which can transfer data using socket connection.</p>
 
 <p>We have language bindings in Android, C#(Windows 8). You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
 <p>This example API documentation page was created with <a href="http://github.com/flyingbuffalo/WFDAndroid">WFDManager</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</pre>
-<pre class="highlight python"><span class="kn">import</span> <span class="s">'kittn'</span>
+<p>WFDManager API 문서 입니다! WFDManager는 WiFi Direct 라이브러리입니다. 간단한 API를 통해 다른 WiFi Direct 장치들과 데이터 전송을 할 수 있습니다.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">Kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</pre>
-<pre class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<p><aside class="notice">
-You must replace <code class="prettyprint">meowmeowmeow</code> with your personal API key.
-</aside></p>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</pre>
-<pre class="highlight python"><span class="kn">import</span> <span class="s">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">Kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</pre>
-<pre class="highlight shell">curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://example.com/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>Android와 C#(Window 8 App)을 지원합니다. 오른쪽 어두운 화면에서는 사용법을 보실 수 있고, 또한 탭을 통해 언어를 바꾸어 확인하실 수 있습니다.</p>
+<h1 id='package-flying-buffalo'>Package flying.buffalo</h1><h2 id='interface'>Interface</h2>
+<ul>
+<li>WFDDeviceDiscoveredListener</li>
+<li>WFDDeviceConnectedListener</li>
+<li>WFDPairInfo.PairSocketConnectedListener</li>
+</ul>
+<h2 id='class'>Class</h2>
+<ul>
+<li>WFDManager</li>
+<li>WFDDevice</li>
+<li>WFDPairInfo</li>
+</ul>
+<h1 id='api-list'>API List</h1>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>Interface</th>
+<th>Method</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>WFDDeviceDiscoveredListener</td>
+<td>onDevicesDiscovered</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td></td>
+<td>onDevicesDiscoverFailed</td>
+</tr>
+<tr>
+<td>WFDDeviceConnectedListener</td>
+<td>onDeviceConnected</td>
+</tr>
+<tr>
+<td></td>
+<td>onDeviceConnectFailed</td>
+</tr>
+<tr>
+<td></td>
+<td>onDeviceDisconnected</td>
+</tr>
+<tr>
+<td>WFDPairInfo.PairSocketConnectedListener</td>
+<td>onSocketConnected</td>
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside></p>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre>
-<pre class="highlight python"><span class="kn">import</span> <span class="s">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">Kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre>
-<pre class="highlight shell">curl <span class="s2">"http://example.com/api/kittens/3"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<p><aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside></p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Class</th>
+<th>Method</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the cat to retrieve</td>
+<td>WFDManager</td>
+<td>getDevicesAsync</td>
+</tr>
+<tr>
+<td></td>
+<td>pairAsync</td>
+</tr>
+<tr>
+<td></td>
+<td>unpair</td>
+</tr>
+<tr>
+<td></td>
+<td>setWFDDeviceDiscoveredListener</td>
+</tr>
+<tr>
+<td></td>
+<td>setWFDDeviceConnectedListener</td>
+</tr>
+<tr>
+<td>WFDDevice</td>
+<td></td>
+</tr>
+<tr>
+<td>WFDPairInfo</td>
+<td>getLocalAddress</td>
+</tr>
+<tr>
+<td></td>
+<td>getRemoteAddress</td>
+</tr>
+<tr>
+<td></td>
+<td>getWFDDevice</td>
+</tr>
+<tr>
+<td></td>
+<td>connectSocketAsync</td>
+</tr>
+</tbody></table>
+<h1 id='wfddevicediscoveredlistener'>WFDDeviceDiscoveredListener</h1>
+<p>WFDManager.getDevicesAsync의 결과값을 포착하는 리스너</p>
+<h2 id='1--methods'>1. Methods</h2><h3 id='ondevicesdiscovered'>onDevicesDiscovered</h3><pre class="highlight csharp"><span class="k">void</span> <span class="nf">onDevicesDiscovered</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">WFDDevice</span><span class="p">&gt;</span> <span class="n">deviceList</span><span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kt">void</span> <span class="nf">onDevicesDiscovered</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">WFDDevice</span><span class="o">&gt;</span> <span class="n">deviceList</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void onDevicesDiscovered(deviceList)</code></p>
+
+<p>장치 탐색 성공 시 deviceList를 인자로 하여 호출 됨.</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>deviceList</td>
+<td>List&lt;WFDDevice&gt;</td>
+<td>List&lt;WFDDevice&gt;</td>
+<td>탐색 성공한 기기 목록</td>
+</tr>
+</tbody></table>
+<h3 id='ondevicesdiscoverfailed'>onDevicesDiscoverFailed</h3><pre class="highlight csharp"><span class="k">void</span> <span class="nf">onDevicesDiscoverFailed</span><span class="p">(</span><span class="kt">int</span> <span class="n">reasonCode</span><span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kt">void</span> <span class="nf">onDevicesDiscoverFailed</span><span class="p">(</span><span class="kt">int</span> <span class="n">reasonCode</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void onDevicesDiscoverFailed(reasonCode)</code></p>
+
+<p>장치 탐색 실패 시 호출 됨.</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>reasonCode</td>
+<td>int</td>
+<td>int</td>
+<td>실패 원인 코드</td>
+</tr>
+</tbody></table>
+<h1 id='wfddeviceconnectedlistener'>WFDDeviceConnectedListener</h1>
+<p>WFDManager.connectAsync의 결과값을 포착하는 리스너</p>
+<h2 id='1--methods'>1. Methods</h2><h3 id='ondeviceconnected'>onDeviceConnected</h3><pre class="highlight csharp"><span class="k">void</span> <span class="nf">onDeviceConnected</span><span class="p">(</span><span class="n">WFDPairInfo</span> <span class="n">pair</span><span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kt">void</span> <span class="nf">onDeviceConnected</span><span class="p">(</span><span class="n">WFDPairInfo</span> <span class="n">pair</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void onDeviceConnected(WFDPairInfo pair)</code></p>
+
+<p>장치 연결 성공 시 호출 됨</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>pair</td>
+<td>WFDPairInfo</td>
+<td>WFDPairInfo</td>
+<td>연결에 성공한 WFDPairInfo</td>
+</tr>
+</tbody></table>
+<h3 id='ondeviceconnectfailed'>onDeviceConnectFailed</h3><pre class="highlight csharp"><span class="k">void</span> <span class="nf">onDeviceConnectFailed</span><span class="p">(</span><span class="kt">int</span> <span class="n">reasonCode</span><span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kt">void</span> <span class="nf">onDeviceConnectFailed</span><span class="p">(</span><span class="kt">int</span> <span class="n">reasonCode</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void onDeviceConnectFailed(reasonCode)</code></p>
+
+<p>장치 연결 실패 시 호출 됨.</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>reasonCode</td>
+<td>int</td>
+<td>int</td>
+<td>실패 원인 코드</td>
+</tr>
+</tbody></table>
+<h3 id='ondevicedisconnected'>onDeviceDisconnected</h3><pre class="highlight csharp"><span class="k">void</span> <span class="nf">onDeviceDisconnected</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="kt">void</span> <span class="nf">onDeviceDisconnected</span><span class="p">(</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void onDeviceDisconnected()</code></p>
+
+<p>장치 연결 종료 시 호출 됨</p>
+<h1 id='pairsocketconnectedlistener'>PairSocketConnectedListener</h1>
+<p>WFDPairInfo.connectSocketAsync의 결과값을 포착하는 Listener</p>
+<h2 id='1--methods'>1. Methods</h2><h3 id='onsocketconnected'>onSocketConnected</h3><pre class="highlight csharp"><span class="k">void</span> <span class="nf">onSocketConnected</span><span class="p">(</span><span class="n">StreamSocket</span> <span class="n">socket</span><span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kt">void</span> <span class="nf">onSocketConnected</span><span class="p">(</span><span class="n">Socket</span> <span class="n">socket</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void onSocketConnected(socket)</code></p>
+
+<p>connectSocketAsync의 호출로 Socket Connection 성공 시 호출 됨</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>socket</td>
+<td>StreamSocket</td>
+<td>StreamSocket</td>
+<td>연결 성공한 socket</td>
+</tr>
+</tbody></table>
+<h1 id='wfdmanager'>WFDManager</h1>
+<p>Wifi Direct Device를 관리하는 Base Class. Singleton으로 instance를 사용하도록 한다.</p>
+
+<ul>
+<li>Wifi direct를 시작하고</li>
+<li>주변의 Wifi direct 장치를 찾으며</li>
+<li>Pairing, Socket Connection을 담당한다.</li>
+</ul>
+<h2 id='1--public-constructors'>1. Public Constructors</h2><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">WFDManager</span><span class="p">(</span><span class="n">DependencyObject</span> <span class="n">parent</span><span class="p">,</span> 
+                        <span class="n">WFDDeviceDiscoveredListener</span> <span class="n">wfdDeviceDiscoveredListener</span><span class="p">,</span> 
+                        <span class="n">WFDDeviceConnectedListener</span> <span class="n">wfdDeviceConnectedListener</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">WFDManager</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> 
+                        <span class="n">WFDDeviceDiscoveredListener</span> <span class="n">wfdDeviceDiscoveredListener</span><span class="o">,</span> 
+                        <span class="n">WFDDeviceConnectedListener</span> <span class="n">wfdDeviceConnectedListener</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">public void WFDMaager(parent | context, discoveredListener, connectedListner)</code></p>
+
+<p>장비의 Wifi direct를 사용할 수 있도록 상태를 변경하고, connetecion 요청을 처리할 리스너를 등록한다.</p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>parent OR context</td>
+<td>Context</td>
+<td>DependencyObject</td>
+<td>시스템에 접근하기 위한 인자</td>
+</tr>
+<tr>
+<td>discoveredListener</td>
+<td>WFDDeviceDiscoveredListener</td>
+<td>WFDDeviceDiscoveredListener</td>
+<td>주변 기기들을 포착</td>
+</tr>
+<tr>
+<td>connectedListner</td>
+<td>WFDDeviceConnectedListener</td>
+<td>WFDDeviceConnectedListener</td>
+<td>기기 연결 이벤트를 포착</td>
+</tr>
+</tbody></table>
+<h2 id='2--public-methods'>2. Public Methods</h2><h3 id='getdevicesasync'>getDevicesAsync</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">getDevicesAsync</span><span class="p">()</span>
+
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDevicesAsync</span><span class="p">(</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void getDevicesAsync()</code></p>
+
+<p>주변의 wifi direct가 켜져있는 Device들을 비동기적으로 탐색한다. wfdDeviceDiscoveredListener를 통해, 성공 시 List<WFDDevice>를 반환한다. 내부적으로 Android를 탐색하기위해Windows.Devices.WiFiDirect를 사용하고, Windows를 탐색하기위해Windows.Networking.Proximity를 사용한다.  탐색 도중 작업이 취소되면 탐색된 리스트를 clear한다. </p>
+<h4 id='returns'>Returns</h4>
+<p>onDevicesDiscovered(List<WFDDevice> deviceList)를 통해 연결된 기기의 정보가 반환</p>
+<h3 id='pairasync'>pairAsync</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">pairAsync</span><span class="p">()</span>
+
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">pairAsync</span><span class="p">(</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void pairAsync()</code></p>
+
+<p>device와 비동기적으로 연결한다. 
+WFDDeviceConnectedListener를 통해 결과값을 알 수 있다.</p>
+<h4 id='returns'>Returns</h4>
+<p>onDeviceConnected(WFDPairInfo)를 통해 연결된 기기의 정보가 반환</p>
+<h3 id='unpair'>unpair</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">unpair</span><span class="p">(</span><span class="n">WFDPairInfo</span> <span class="n">pair</span><span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">unpair</span><span class="p">(</span><span class="o">)</span>
+</pre>
+<h4 id='windows'>Windows</h4>
+<p><code class="prettyprint">void unpair( pair )</code></p>
+<h4 id='android'>Android</h4>
+<p><code class="prettyprint">void unpair()</code></p>
+
+<p>연결된 device와 연결을 끊는다.</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>pair</td>
+<td>WFDPairInfo</td>
+<td></td>
+<td>연결을 끊을 기기 연결 정보</td>
+</tr>
+</tbody></table>
+
+<p><aside class="notice">
+안드로이드는 모든 연결을 해제함.
+</aside></p>
+<h3 id='setwfddevicediscoveredlistener'>setWFDDeviceDiscoveredListener</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">setWFDDeviceDiscoveredListener</span><span class="p">(</span> <span class="n">WFDDeviceDiscoveredListener</span> <span class="n">listener</span> <span class="p">)</span>
+
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setWFDDeviceDiscoveredListener</span><span class="p">(</span> <span class="n">WFDDeviceDiscoveredListener</span> <span class="n">listener</span> <span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void setWFDDeviceDiscoveredListener( listener )</code></p>
+
+<p>WFDDeviceDiscoveredListener를 설정한다.</p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>listener</td>
+<td>WFDDeviceDiscoveredListener</td>
+<td>WFDDeviceDiscoveredListener</td>
+<td>주변 기기들을 포착</td>
+</tr>
+</tbody></table>
+<h2 id='3--public-field'>3. Public Field</h2>
+<p>TODO</p>
+<h1 id='wfddevice'>WFDDevice</h1>
+<p>WiFi direct를 지원하는 remote device </p>
+<h2 id='1--public-constructors'>1. Public Constructors</h2><pre class="highlight csharp"><span class="k">public</span> <span class="nf">WFDDevice</span><span class="p">(</span><span class="n">PeerInformation</span> <span class="n">peerInfo</span><span class="p">)</span>      <span class="c1">// Windows device
+</span><span class="k">public</span> <span class="nf">WFDDevice</span><span class="p">(</span><span class="n">DeviceInformation</span> <span class="n">wfdDevInfo</span><span class="p">)</span>  <span class="c1">// Andorid device
+</span></pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="nf">WFDDevice</span><span class="p">(</span><span class="n">WifiP2pDevice</span> <span class="n">device</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">void WFDDevice(device)</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>device</td>
+<td>PeerInformation</td>
+<td>WifiP2pDevice</td>
+<td>기기 정보</td>
+</tr>
+<tr>
+<td></td>
+<td>DeviceInformation</td>
+<td></td>
+<td>기기 정보 (윈도우끼리만)</td>
+</tr>
+</tbody></table>
+<h2 id='2--public-field'>2. Public Field</h2>
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>wfdDeviceInfo</td>
+<td>DeviceInformation OR PeerInformation</td>
+<td>WifiP2pDevice</td>
+<td>platform 별, 주변 device 정보</td>
+</tr>
+<tr>
+<td>IsDevice</td>
+<td>bool</td>
+<td>bool</td>
+<td>platform flag. true = Android, false = Windows</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>string</td>
+<td>string</td>
+<td>장치의 DisplayName 반환</td>
+</tr>
+</tbody></table>
+<h1 id='wfdpairinfo'>WFDPairInfo</h1>
+<p>WiFi Direct로 연결된 Device </p>
+<h2 id='1--public-constructors'>1. Public Constructors</h2><pre class="highlight csharp"><span class="k">public</span> <span class="nf">WFDPairInfo</span><span class="p">(</span><span class="n">WFDDevice</span> <span class="n">device</span><span class="p">,</span> <span class="n">DependencyObject</span> <span class="n">parent</span><span class="p">)</span>                               <span class="c1">// Windows
+</span><span class="k">public</span> <span class="nf">WFDPairInfo</span><span class="p">(</span><span class="n">WFDDevice</span> <span class="n">device</span><span class="p">,</span> <span class="n">EndpointPair</span> <span class="n">deviceEndpointPair</span><span class="p">,</span> <span class="n">DependencyObject</span> <span class="n">parent</span><span class="p">)</span>      <span class="c1">// Android
+</span></pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="nf">WFDPairInfo</span><span class="p">(</span><span class="n">WifiP2pInfo</span> <span class="n">info</span><span class="o">)</span>
+</pre>
+<h4 id='windows'>Windows</h4>
+<p><code class="prettyprint">void WFDPairInfo(device, parent)</code></p>
+
+<p><code class="prettyprint">void WFDPairInfo(device, endpointPair, parent)</code></p>
+<h4 id='android'>Android</h4>
+<p><code class="prettyprint">void WFDPairInfo(info)</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>인자명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>device</td>
+<td>WFDDevice</td>
+<td></td>
+<td>기기 정보</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>DependencyObject</td>
+<td></td>
+<td>시스템에 접근하기 위한 인자</td>
+</tr>
+<tr>
+<td>endpointPair</td>
+<td>EndpointPair</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>info</td>
+<td></td>
+<td>WifiP2pInfo</td>
+<td>연결된 기기 정보</td>
+</tr>
+</tbody></table>
+<h2 id='2--public-methods'>2. Public Methods</h2><h3 id='getlocaladdress'>getLocalAddress</h3><pre class="highlight csharp"><span class="k">public</span> <span class="kt">string</span> <span class="nf">getLocalAddress</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="n">String</span> <span class="nf">getLocalAddress</span><span class="p">(</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">string getLocalAddress()</code></p>
+
+<p>Local Address 반환</p>
+<h5 id='return'>Return</h5>
+<table><thead>
+<tr>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>string</td>
+<td>String</td>
+<td>local address 문자열</td>
+</tr>
+</tbody></table>
+<h3 id='getremoteaddress'>getRemoteAddress</h3><pre class="highlight csharp"><span class="k">public</span> <span class="kt">string</span> <span class="nf">getRemoteAddress</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="n">String</span> <span class="nf">getRemoteAddress</span><span class="p">(</span><span class="o">)</span>
+</pre>
+
+<p><code class="prettyprint">string getRemoteAddress()</code></p>
+
+<p>Remote Address 반환</p>
+<h5 id='return'>Return</h5>
+<table><thead>
+<tr>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>string</td>
+<td>String</td>
+<td>remote address 문자열</td>
+</tr>
+</tbody></table>
+<h3 id='getwfddevice'>getWFDDevice</h3><pre class="highlight csharp"><span class="k">public</span> <span class="n">WFDDevice</span> <span class="nf">getWFDDevice</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="n">not</span> <span class="n">supported</span>
+</pre>
+
+<p><code class="prettyprint">WFDDevice getWFDDevice()</code></p>
+
+<p>WFDDevice 반환</p>
+<h5 id='return'>Return</h5>
+<table><thead>
+<tr>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>WFDDevice</td>
+<td></td>
+<td>연결 하고자 하는 WFDDevice</td>
+</tr>
+</tbody></table>
+
+<p><aside class="warning">
+getWFDDevice()는 윈도우에서만 사용 가능!
+</aside></p>
+<h3 id='connectsocketasync'>connectSocketAsync</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">connectSocketAsync</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPairSocketConnectedListener</span><span class="p">(</span><span class="o">)</span>
+</pre>
+<h4 id='windows'>Windows</h4>
+<p><code class="prettyprint">void connectSocketAsync()</code></p>
+<h4 id='android'>Android</h4>
+<p><code class="prettyprint">void setPairSocketConnectedListener()</code></p>
+
+<p>TODO 이름 하나로!
+페어링된 device과 통신하기 위한 socket생성</p>
+<h5 id='return'>Return</h5>
+<p>onSocketConnected(Socket s)에서 연결된 socket을 반환</p>
+<h2 id='3--public-field'>3. Public Field</h2>
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>언어별 Type</th>
+<th></th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>C#</td>
+<td>Java</td>
+<td></td>
+</tr>
+<tr>
+<td>device</td>
+<td>WFDDevice</td>
+<td>WFDDevice</td>
+<td>연결 하고자 하는 WFDDevice</td>
 </tr>
 </tbody></table>
 
@@ -246,8 +768,8 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="java">java</a>
                 <a href="#" data-language-name="csharp">csharp</a>
+                <a href="#" data-language-name="java">java</a>
           </div>
       </div>
     </div>
