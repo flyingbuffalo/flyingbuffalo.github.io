@@ -28,14 +28,14 @@ WFDManager API 문서 입니다! WFDManager는 WiFi Direct 라이브러리입니
 
 Android와 C#(Window 8 App)을 지원합니다. 오른쪽 어두운 화면에서는 사용법을 보실 수 있고, 또한 탭을 통해 언어를 바꾸어 확인하실 수 있습니다.
 
-#package flying.buffalo
+#Package flying.buffalo
 
-##interface
+## Interface
  - WFDDeviceDiscoveredListener
  - WFDDeviceConnectedListener
  - WFDPairInfo.PairSocketConnectedListener
 
-##class
+## Class
  - WFDManager
  - WFDDevice
  - WFDPairInfo
@@ -65,9 +65,9 @@ WFDPairInfo|getLocalAddress
            |getWFDDevice
            |connectSocketAsync
 
-#WFDDeviceDiscoveredListener
+# WFDDeviceDiscoveredListener
 WFDManager.getDevicesAsync의 결과값을 포착하는 리스너
-##1. Methods
+## 1. Methods
 ### onDevicesDiscovered
 ```csharp
 void onDevicesDiscovered(List<WFDDevice> deviceList)
@@ -75,11 +75,12 @@ void onDevicesDiscovered(List<WFDDevice> deviceList)
 ```
 
 ```java
-/*추가하삼!*/
+void onDevicesDiscovered(List<WFDDevice> deviceList)
 ```
-void onDevicesDiscovered(deviceList)
 
-장치 탐색 성공 시 deviceList와 함께 호출 됨.
+`void onDevicesDiscovered(deviceList)`
+
+장치 탐색 성공 시 deviceList를 인자로 하여 호출 됨.
 
 #### Parameters
 
@@ -88,15 +89,6 @@ void onDevicesDiscovered(deviceList)
           |  C#        |    Java        |          
 deviceList|List&lt;WFDDevice&gt;|List&lt;WFDDevice&gt;| 탐색 성공한 기기 목록 |
 
-
-#### Return
-
-Return name |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-
-
-
 ### onDevicesDiscoverFailed
 ```csharp
 void onDevicesDiscoverFailed(int reasonCode)
@@ -104,31 +96,25 @@ void onDevicesDiscoverFailed(int reasonCode)
 ```
 
 ```java
-/*추가하삼!*/
+void onDevicesDiscoverFailed(int reasonCode)
 ```
-void onDevicesDiscoverFailed(reasonCode)
+
+`void onDevicesDiscoverFailed(reasonCode)`
 
 장치 탐색 실패 시 호출 됨.
 
 #### Parameters
 
-  인자명   |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-reasonCode|int|int| 실패 원인 코드 |
-
-
-#### Return
-
-Return name |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
+  인자명   |          언어별 Type       ||  설명        |   
+--------- | ---------- | --------------|--------------|
+          |  C#        |    Java       |          
+reasonCode|int         |int            | 실패 원인 코드 |
 
 
 
-#WFDDeviceConnectedListener
+# WFDDeviceConnectedListener
 WFDManager.connectAsync의 결과값을 포착하는 리스너
-##1. Methods
+## 1. Methods
 ### onDeviceConnected
 ```csharp
 void onDeviceConnected(WFDPairInfo pair)
@@ -136,27 +122,19 @@ void onDeviceConnected(WFDPairInfo pair)
 ```
 
 ```java
-/*추가하삼!*/
-```
 void onDeviceConnected(WFDPairInfo pair)
+```
+
+`void onDeviceConnected(WFDPairInfo pair)`
 
 장치 연결 성공 시 호출 됨
 
 #### Parameters
 
-  인자명   |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-pair|WFDPairInfo|WFDPairInfo| 연결에 성공한 WFDPairInfo |
-
-
-#### Return
-
-Return name |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-
-
+  인자명   |          언어별 Type       ||           설명          |   
+--------- | ---------- | ------------- |------------------------ |
+          |  C#        |    Java       |          
+pair      |WFDPairInfo |   WFDPairInfo | 연결에 성공한 WFDPairInfo |
 
 ### onDeviceConnectFailed
 ```csharp
@@ -165,59 +143,39 @@ void onDeviceConnectFailed(int reasonCode)
 ```
 
 ```java
-/*추가하삼!*/
+void onDeviceConnectFailed(int reasonCode)
 ```
-void onDeviceConnectFailed(reasonCode)
+
+`void onDeviceConnectFailed(reasonCode)`
 
 장치 연결 실패 시 호출 됨.
 
 #### Parameters
 
-  인자명   |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-reasonCode|int|int| 실패 원인 코드 |
+  인자명   |          언어별 Type     ||  설명       |   
+--------- | ---------- | ---------- |------------- |
+          |  C#        |    Java    |          
+reasonCode|      int   |    int     | 실패 원인 코드 |
 
-
-#### Return
-
-Return name |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
 
 
 ### onDeviceDisconnected
 ```csharp
 void onDeviceDisconnected()
-
 ```
 
 ```java
-/*추가하삼!*/
-```
 void onDeviceDisconnected()
+```
+
+`void onDeviceDisconnected()`
 
 장치 연결 종료 시 호출 됨
 
-#### Parameters
 
-  인자명   |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-
-
-
-#### Return
-
-Return name |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
-
-
-
-#PairSocketConnectedListener
-WFDPairInfo.connectSocketAsync의 결과값을 포착하는 리스너
-##1. Methods
+# PairSocketConnectedListener
+WFDPairInfo.connectSocketAsync의 결과값을 포착하는 Listener
+## 1. Methods
 ### onSocketConnected
 ```csharp
 void onSocketConnected(StreamSocket socket)
@@ -225,25 +183,19 @@ void onSocketConnected(StreamSocket socket)
 ```
 
 ```java
-/*추가하삼!*/
+void onSocketConnected(Socket socket)
 ```
-void onSocketConnected(socket)
 
-StreamSocket 생성 성공 시 호출 됨
+`void onSocketConnected(socket)`
+
+connectSocketAsync의 호출로 Socket Connection 성공 시 호출 됨
 
 #### Parameters
 
-  인자명   |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
+  인자명   |          언어별 Type        ||  설명                |   
+--------- | ---------- | -------------- |----------------------|
           |  C#        |    Java        |          
-socket|StreamSocket|StreamSocket|생성 성공한 StreamSocket
-
-
-#### Return
-
-Return name |          언어별 Type       ||  설명   |   
---------- | ---------- | --------------|---------|
-          |  C#        |    Java        |          
+socket    |StreamSocket| StreamSocket   |   연결 성공한 socket  |
 
 
 # WFDManager
@@ -254,7 +206,7 @@ Wifi Direct Device를 관리하는 Base Class. Singleton으로 instance를 사�
 * 주변의 Wifi direct 장치를 찾으며
 * Pairing, Socket Connection을 담당한다.
 
-## Public Constructors
+## 1. Public Constructors
 
 ```csharp
 public void WFDManager(DependencyObject parent, 
@@ -282,7 +234,7 @@ discoveredListener  | WFDDeviceDiscoveredListener |  WFDDeviceDiscoveredListener
 connectedListner    | WFDDeviceConnectedListener  |  WFDDeviceConnectedListener  | 기기 연결 이벤트를 포착    |
 
 
-## Public Methods
+## 2. Public Methods
 
 ### getDevicesAsync
 
@@ -378,7 +330,7 @@ WFDDeviceDiscoveredListener를 설정한다.
           |  C#        |    Java        |          
 listener  | WFDDeviceDiscoveredListener |  WFDDeviceDiscoveredListener | 주변 기기들을 포착 |
 
-## Public Field
+## 3. Public Field
 
 TODO
 
@@ -386,7 +338,7 @@ TODO
 
 WiFi direct를 지원하는 remote device 
 
-## Public Constructors
+## 1. Public Constructors
 
 ```csharp
 public WFDDevice(PeerInformation peerInfo)		// Windows device
@@ -408,7 +360,7 @@ device    | PeerInformation |  WifiP2pDevice | 기기 정보 |
           | DeviceInformation || 기기 정보 (윈도우끼리만)|
 			
 
-## Public Field
+## 2. Public Field
 
    필드명            |          언어별 Type         |                              |  설명                     |   
 ------------------- | --------------------------  | ----------------------------|-----------------------------|
@@ -417,11 +369,11 @@ wfdDeviceInfo    	| DeviceInformation OR PeerInformation	|  WifiP2pDevice    | p
 IsDevice            | bool          |  bool                  | platform flag. true = Android, false = Windows|
 Name                | string        |  string                  | 장치의 DisplayName 반환 |
 
-#WFDPairInfo
+# WFDPairInfo
 
 WiFi Direct로 연결된 Device 
 
-## Public Constructors
+## 1. Public Constructors
 
 ```csharp
 public WFDPairInfo(WFDDevice device, DependencyObject parent)								// Windows
@@ -450,7 +402,7 @@ parent   	  | DependencyObject |                | 시스템에 접근하기 위�
 endpointPair  | EndpointPair     |                |
 info      	  |                  | WifiP2pInfo    | 연결된 기기 정보 			 |
 
-## Public Methods
+## 2. Public Methods
 
 ### getLocalAddress
 ```csharp
@@ -531,160 +483,16 @@ public void setPairSocketConnectedListener()
 #### Android
 `void setPairSocketConnectedListener()`
 
+TODO 이름 하나로!
 페어링된 device과 통신하기 위한 socket생성
 
 ##### Return
 
 onSocketConnected(Socket s)에서 연결된 socket을 반환
 
-### Public Fields
+## 3. Public Field
 
   필드명       |          언어별 Type              ||  설명                    |   
 ------------- | ---------------- | -------------- | ------------------------ |
           	  |  C#        		 |    Java        |          
 device    	  | WFDDevice  		 |    WFDDevice   | 연결 하고자 하는 WFDDevice |
-
-
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import 'kittn'
-
-api = Kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import 'kittn'
-
-api = Kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import 'kittn'
-
-api = Kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
-
