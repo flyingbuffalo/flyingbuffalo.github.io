@@ -62,42 +62,185 @@ WFDPairInfo|getLocalAddress
 
 
 #WFDDeviceDiscoveredListener
-WFDManager의 getDevicesAsync() 결과값 Listener
+WFDManager.getDevicesAsync의 결과값을 포착하는 리스너
 ##1. Methods
 ### onDevicesDiscovered
 ```csharp
 void onDevicesDiscovered(List<WFDDevice> deviceList)
+
 ```
-장치 탐색 성공 시 호출 됨
+
+```java
+/*추가하삼!*/
+```
+void onDevicesDiscovered(deviceList)
+
+장치 탐색 성공 시 deviceList와 함께 호출 됨.
+
+#### Parameters
+
+  인자명   |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+deviceList|List&lt;WFDDevice&gt;|List&lt;WFDDevice&gt;| 탐색 성공한 기기 목록 |
+
+
+#### Return
+
+Return name |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
 
 
 ### onDevicesDiscoverFailed
+```csharp
 void onDevicesDiscoverFailed(int reasonCode)
-: 장치 탐생 실패 시 호출 됨
+
+```
+
+```java
+/*추가하삼!*/
+```
+void onDevicesDiscoverFailed(reasonCode)
+
+장치 탐색 실패 시 호출 됨.
+
+#### Parameters
+
+  인자명   |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+reasonCode|int|int| 실패 원인 코드 |
+
+
+#### Return
+
+Return name |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
 
 
 #WFDDeviceConnectedListener
-WFDManager의 connectAsync(WFDDevice device) 결과값 Listener
+WFDManager.connectAsync의 결과값을 포착하는 리스너
 ##1. Methods
 ### onDeviceConnected
+```csharp
 void onDeviceConnected(WFDPairInfo pair)
-: 연결 성공 시 호출 됨
+
+```
+
+```java
+/*추가하삼!*/
+```
+void onDeviceConnected(WFDPairInfo pair)
+
+장치 연결 성공 시 호출 됨
+
+#### Parameters
+
+  인자명   |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+pair|WFDPairInfo|WFDPairInfo| 연결에 성공한 WFDPairInfo |
+
+
+#### Return
+
+Return name |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
+
 
 ### onDeviceConnectFailed
+```csharp
 void onDeviceConnectFailed(int reasonCode)
-: 연결 실패 시 호출 됨
+
+```
+
+```java
+/*추가하삼!*/
+```
+void onDeviceConnectFailed(reasonCode)
+
+장치 연결 실패 시 호출 됨.
+
+#### Parameters
+
+  인자명   |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+reasonCode|int|int| 실패 원인 코드 |
+
+
+#### Return
+
+Return name |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
 
 ### onDeviceDisconnected
+```csharp
 void onDeviceDisconnected()
-: 연결 종료 시 호출 됨
+
+```
+
+```java
+/*추가하삼!*/
+```
+void onDeviceDisconnected()
+
+장치 연결 종료 시 호출 됨
+
+#### Parameters
+
+  인자명   |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
+
+
+#### Return
+
+Return name |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
+
 
 #PairSocketConnectedListener
-WFDPairInfo의 connectSocketAsync의 결과값 Listener
-
+WFDPairInfo.connectSocketAsync의 결과값을 포착하는 리스너
 ##1. Methods
-##onSocketConnected
-void onSocketConnected(StreamSocket s)
-: Socket생성 성공시 호출 됨
+### onSocketConnected
+```csharp
+void onSocketConnected(StreamSocket socket)
+
+```
+
+```java
+/*추가하삼!*/
+```
+void onSocketConnected(socket)
+
+StreamSocket 생성 성공 시 호출 됨
+
+#### Parameters
+
+  인자명   |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+socket|StreamSocket|StreamSocket|생성 성공한 StreamSocket
+
+
+#### Return
+
+Return name |          언어별 Type       ||  설명   |   
+--------- | ---------- | --------------|---------|
+          |  C#        |    Java        |          
+
 
 
 #WFDManager
