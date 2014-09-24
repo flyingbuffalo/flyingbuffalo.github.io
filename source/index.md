@@ -23,6 +23,173 @@ We have language bindings in Android, C#(Windows 8). You can view code examples 
 
 This example API documentation page was created with [WFDManager](http://github.com/flyingbuffalo/WFDAndroid). Feel free to edit it and use it as a base for your own API's documentation.
 
+#package flyingBuffalo
+
+##interface
+ - WFDDeviceDiscoveredListener
+ - WFDDeviceConnectedListener
+ - WFDPairInfo.PairSocketConnectedListener
+
+##class
+ - WFDManager
+ - WFDDevice
+ - WFDPairInfo
+
+#API List
+
+Interface | Method
+--------- | -----------
+WFDDeviceDiscoveredListener| onDevicesDiscovered
+                           | onDevicesDiscoverFailed
+WFDDeviceConnectedListener | onDeviceConnected
+                           | onDeviceConnectFailed
+                           | onDeviceDisconnected
+WFDPairInfo.PairSocketConnectedListener | onSocketConnected
+
+
+Class | Method
+--------- | -----------
+WFDManager |getDevicesAsync
+           |pairAsync
+           |unpair
+           |setWFDDeviceDiscoveredListener
+           |setWFDDeviceConnectedListener
+WFDDevice|
+WFDPairInfo|getLocalAddress
+           |getRemoteAddress
+           |getWFDDevice
+           |connectSocketAsync
+
+
+#WFDDeviceDiscoveredListener
+WFDManager의 getDevicesAsync() 결과값 Listener
+##1. Methods
+### onDevicesDiscovered
+```csharp
+void onDevicesDiscovered(List<WFDDevice> deviceList)
+```
+장치 탐색 성공 시 호출 됨
+
+
+### onDevicesDiscoverFailed
+void onDevicesDiscoverFailed(int reasonCode)
+: 장치 탐생 실패 시 호출 됨
+
+
+#WFDDeviceConnectedListener
+WFDManager의 connectAsync(WFDDevice device) 결과값 Listener
+##1. Methods
+### onDeviceConnected
+void onDeviceConnected(WFDPairInfo pair)
+: 연결 성공 시 호출 됨
+
+### onDeviceConnectFailed
+void onDeviceConnectFailed(int reasonCode)
+: 연결 실패 시 호출 됨
+
+### onDeviceDisconnected
+void onDeviceDisconnected()
+: 연결 종료 시 호출 됨
+
+#PairSocketConnectedListener
+WFDPairInfo의 connectSocketAsync의 결과값 Listener
+
+##1. Methods
+##onSocketConnected
+void onSocketConnected(StreamSocket s)
+: Socket생성 성공시 호출 됨
+
+
+#WFDManager
+1. wifi direct를 시작하고 2. 주변의 wifi direct장치를 찾으며 3. Pairing, unPairing을 담당한다. 
+
+##1. Field
+##2. Constructor
+- WFDManager(DependencyObject parent,
+   WFDDeviceDiscoveredListener wfdDeviceDiscoveredListener,
+WFDDeviceConnectedListener wfdDeviceConnectedListener)
+  : 장비의 Wifi direct를 사용할 수 있도록 상태를 변경하고, connetecion 요청을 처리할 리스너를 등록한다.
+
+##3. Methods
+###getDevicesAsync
+void getDevicesAsync()
+: 주변의 wifi direct가 켜져있는 Device들을 비동기적으로 탐색한다. wfdDeviceDiscoveredListener를 통해, 성공 시 List<WFDDevice>를 반환한다. 내부적으로 Android를 탐색하기위해Windows.Devices.WiFiDirect를 사용하고, Windows를 탐색하기위해Windows.Networking.Proximity를 사용한다.  탐색 도중 작업이 취소되면 탐색된 리스트를 clear한다. 
+
+###pairAsync
+void pairAsync(WFDDevice device)
+: device와 비동기적으로 페어링한다. 
+WFDDeviceConnectedListener를 통해 결과값을 알 수 있다. 
+
+###unpair
+void unpair(WFDPairInfo pair)
+: 이미 페어링된 device와 연결을 끊는다.
+
+###setWFDDeviceDiscoveredListener
+void setWFDDeviceDiscoveredListener
+(WFDDeviceDiscoveredListener wfdDeviceDiscoveredListener)
+: WFDDeviceDiscoveredListener setter
+
+###setWFDDeviceConnectedListener
+void setWFDDeviceConnectedListener
+(WFDDeviceConnectedListener wfdDeviceConnectedListener)
+: WFDDeviceConnectedListener setter
+
+
+#WFDDevice
+Wifi direct를 지원하는 remote device 
+##1. Field
+Object WFDDeviceInfo 
+: Platform에 따라 필요한 정보 반환
+ -Android  : DeviceInformation
+ -Windows : PeerInformation
+
+bool IsDevice 
+:  @deprecated
+Platform 정보 반환 
+-Android : true
+-Windows : false
+
+string Name
+: 장치의 DisplayName 반환
+
+##2. Constructor
+##3. Methods
+
+#WFDPairInfo
+Wifi Direct로 페어링된 device 
+
+##1. Field
+WFDDevice device : 연결 하고자 하는 WFDDevice
+##2. Constructor
+- WFDPairInfo(WFDDevice device, DependencyObject parent)
+: 페어링 된 Windows peer 생성자
+- WFDPairInfo(WFDDevice device, EndpointPair deviceEndpointPair, DependencyObject parent)
+: 페어링 된 Android peer 생성자
+
+##3. Methods
+###getLocalAddress
+string getLocalAddress()
+: Local Address 반환
+-Android : local address
+-Windows : (empty string)
+
+###getRemoteAddress
+string getRemoteAddress()
+: Remote Address반환
+-Android : peer의 address반환
+-Windows : (empty string)
+
+###getWFDDevice
+WFDDevice getWFDDevice()
+: WFDDevice 반환
+
+###connectSocketAsync
+void connectSocketAsync(PairSocketConnectedListener l)
+: 페어링된 device과 통신하기 위한 socket생성.
+
+
+
+
 # Authentication
 
 > To authorize, use this code:
