@@ -672,17 +672,14 @@ WFDDeviceConnectedListener를 통해 결과값을 알 수 있다.</p>
 <p><aside class="warning">
 getWFDDevice()는 윈도우에서만 사용 가능!
 </aside></p>
-<h3 id='connectsocketasync'>connectSocketAsync</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">connectSocketAsync</span><span class="p">()</span>
+<h3 id='connectsocketasync'>connectSocketAsync</h3><pre class="highlight csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">connectSocketAsync</span><span class="p">(</span><span class="n">PairSocketConnectedListener</span> <span class="n">listener</span><span class="p">)</span>
 </pre>
-<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPairSocketConnectedListener</span><span class="p">(</span><span class="o">)</span>
+<pre class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">connectSocketAsync</span><span class="p">(</span><span class="n">PairSocketConnectedListener</span> <span class="n">listener</span><span class="o">)</span>
 </pre>
-<h4 id='windows'>Windows</h4>
-<p><code class="prettyprint">void connectSocketAsync()</code></p>
-<h4 id='android'>Android</h4>
-<p><code class="prettyprint">void setPairSocketConnectedListener()</code></p>
 
-<p>TODO 이름 하나로!
-페어링된 device과 통신하기 위한 socket생성</p>
+<p><code class="prettyprint">void connectSocketAsync(listener)</code></p>
+
+<p>페어링된 device과 통신하기 위한 socket생성</p>
 <h5 id='return'>Return</h5>
 <p>onSocketConnected(Socket s)에서 연결된 socket을 반환</p>
 <h2 id='3--public-field'>3. Public Field</h2>
@@ -701,67 +698,10 @@ getWFDDevice()는 윈도우에서만 사용 가능!
 <td></td>
 </tr>
 <tr>
-<td>device</td>
-<td>WFDDevice</td>
-<td>WFDDevice</td>
-<td>연결 하고자 하는 WFDDevice</td>
-</tr>
-</tbody></table>
-
-          <h1 id='errors'>Errors</h1>
-<p><aside class="notice">This error section is stored in a separate file in <code class="prettyprint">includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the <code class="prettyprint">includes</code> folder and add them to the top of your <code class="prettyprint">index.md</code>&rsquo;s frontmatter. Files are included in the order listed.</aside></p>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slown down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>listener</td>
+<td>PairSocketConnectedListener</td>
+<td>PairSocketConnectedListener</td>
+<td>socket 연결을 받는 listener</td>
 </tr>
 </tbody></table>
 
