@@ -10,7 +10,6 @@ toc_footers:
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
 
 search: true
 ---
@@ -470,20 +469,15 @@ getWFDDevice()는 윈도우에서만 사용 가능!
 
 ### connectSocketAsync
 ```csharp
-public void connectSocketAsync()
+public void connectSocketAsync(PairSocketConnectedListener listener)
 ```
 
 ```java
-public void setPairSocketConnectedListener()
+public void connectSocketAsync(PairSocketConnectedListener listener)
 ```
 
-#### Windows
-`void connectSocketAsync()`
+`void connectSocketAsync(listener)`
 
-#### Android
-`void setPairSocketConnectedListener()`
-
-TODO 이름 하나로!
 페어링된 device과 통신하기 위한 socket생성
 
 ##### Return
@@ -495,4 +489,4 @@ onSocketConnected(Socket s)에서 연결된 socket을 반환
   필드명       |          언어별 Type              ||  설명                    |   
 ------------- | ---------------- | -------------- | ------------------------ |
           	  |  C#        		 |    Java        |          
-device    	  | WFDDevice  		 |    WFDDevice   | 연결 하고자 하는 WFDDevice |
+listener      | PairSocketConnectedListener  		 |    PairSocketConnectedListener   | socket 연결을 받는 listener |
